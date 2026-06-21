@@ -1,5 +1,6 @@
 import AvatarStudio from '@/components/AvatarStudio';
 import Gallery from '@/components/Gallery';
+import HatDrop from '@/components/HatDrop';
 import WalletProviders from '@/components/WalletProviders';
 
 const CLAWD_TOKEN = '8cHzQHUS2s2h8TzCmfqPKYiM4dSt4roa3n7MyRLApump';
@@ -40,6 +41,7 @@ export default function Home() {
           </header>
 
           <AvatarStudio />
+          <HatDrop />
           <Gallery />
         </div>
       </main>
