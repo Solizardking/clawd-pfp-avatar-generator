@@ -15,8 +15,10 @@ export async function POST(request: Request) {
     return Response.json({ error: 'messages array is required.' }, { status: 400 });
   }
 
+  const model = process.env.OPENROUTER_FREE_MODEL || 'cohere/north-mini-code:free';
+
   const payload = {
-    model: 'cohere/north-mini-code:free',
+    model,
     stream: true,
     max_tokens: 256,
     messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
