@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: clawd-pfp-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLOUDFLARE_ACCOUNT_ID
+        value: 2f5db575118d15ec19000e13282201bc
+      - key: CLOUDFLARE_ACCESS_KEY_ID
+        value: 297b3a86805f2d39157080c6fe41bb3b
+      - key: CLOUDFLARE_SECRET_ACCESS_KEY
+        value: 52b1921116f91ea7419a3b40300f8d4b27f2893c9abdc8c7d63b673cbc4edc5f
+      - key: CLOUDFLARE_R2_BUCKET
+        value: clawd
+      - key: CLOUDFLARE_R2_PUBLIC_URL
+        value: https://pub-9a12d2869ea54d26bc39b55ba9a84e9a.r2.dev
+      - key: NFT_SYMBOL
+        value: CLAWD
+      - key: APP_URL
+        value: https://x402.wtf
+      - key: ALLOWED_ORIGINS
+        value: https://x402.wtf,https://clawd-pfp-avatar-generator.vercel.app

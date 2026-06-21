@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420">
+  <defs>
+    <linearGradient id="gold" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#fff0a9"/><stop offset=".4" stop-color="#d68a22"/><stop offset="1" stop-color="#6b390c"/>
+    </linearGradient>
+    <linearGradient id="sol" x1="0" x2="1">
+      <stop stop-color="#9945ff"/><stop offset="1" stop-color="#14f195"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity=".5"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M88 35c69 110 154 166 262 166S543 145 612 35" fill="none" stroke="url(#gold)" stroke-width="48" stroke-linecap="round"/>
+    <path d="M88 35c69 110 154 166 262 166S543 145 612 35" fill="none" stroke="#fff2a8" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+    <circle cx="350" cy="254" r="108" fill="url(#gold)" stroke="#fff2a8" stroke-width="8"/>
+    <path d="M390 176c-63 8-109 58-109 119 0 42 22 79 55 101-13 4-28 7-43 7-66 0-120-54-120-120s54-120 120-120c38 0 72 18 94 45l56 6-44 38 16 57-58-28-49 34 8-59-48-36 59-10c15-17 36-30 63-34z" transform="translate(47 -36) scale(.86)" fill="#25120b" opacity=".42"/>
+    <g transform="translate(265 229) skewX(-16)">
+      <rect x="0" y="0" width="170" height="28" rx="8" fill="url(#sol)"/>
+      <rect x="0" y="49" width="170" height="28" rx="8" fill="url(#sol)"/>
+      <rect x="0" y="98" width="170" height="28" rx="8" fill="url(#sol)"/>
+    </g>
+  </g>
+</svg>

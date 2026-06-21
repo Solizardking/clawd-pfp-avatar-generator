@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="70%">
+      <stop stop-color="#24104c"/><stop offset=".6" stop-color="#0b0617"/><stop offset="1" stop-color="#04040c"/>
+    </radialGradient>
+    <linearGradient id="p" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#c47bff"/><stop offset=".55" stop-color="#7c2dff"/><stop offset="1" stop-color="#361062"/></linearGradient>
+    <linearGradient id="c" x1="0" x2="1"><stop stop-color="#9945ff"/><stop offset="1" stop-color="#14f195"/></linearGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <g transform="translate(80 80)">
+    <ellipse cx="460" cy="720" rx="300" ry="105" fill="#000" opacity=".32"/>
+    <path d="M242 423c-82-107-95-205-38-293 47-72 141-55 145 34 3 63-41 113-105 109 11 46 43 91 95 134z" fill="url(#p)" stroke="#160d28" stroke-width="18"/>
+    <path d="M678 423c82-107 95-205 38-293-47-72-141-55-145 34-3 63 41 113 105 109-11 46-43 91-95 134z" fill="url(#p)" stroke="#160d28" stroke-width="18"/>
+    <path d="M345 95c7-80 34-124 85-132 44-7 79 38 64 86-13 42-49 67-98 68" fill="none" stroke="#7f2dff" stroke-width="32" stroke-linecap="round"/>
+    <path d="M575 95c-7-80-34-124-85-132-44-7-79 38-64 86 13 42 49 67 98 68" fill="none" stroke="#7f2dff" stroke-width="32" stroke-linecap="round" transform="translate(140 0)"/>
+    <path d="M207 278c48-109 139-164 253-164s205 55 253 164c69 18 115 86 106 157L778 777c-7 58-56 102-114 102H256c-58 0-107-44-114-102l-41-342c-9-71 37-139 106-157z" fill="url(#p)" stroke="#180e2d" stroke-width="18"/>
+    <path d="M207 347c58-88 143-132 253-132s195 44 253 132l-37 291H244z" fill="#080a15" stroke="#201139" stroke-width="14"/>
+    <circle cx="348" cy="208" r="40" fill="#050510"/><circle cx="338" cy="196" r="13" fill="#fff"/>
+    <circle cx="572" cy="208" r="40" fill="#050510"/><circle cx="562" cy="196" r="13" fill="#fff"/>
+    <rect x="345" y="432" width="86" height="72" rx="8" fill="#14f195"/><rect x="490" y="432" width="86" height="72" rx="8" fill="#14f195"/>
+    <rect x="404" y="548" width="58" height="58" rx="7" fill="#14f195"/><rect x="505" y="548" width="58" height="58" rx="7" fill="#14f195"/>
+    <path d="M355 723h210l-33 53H324zm33-86h210l-33 53H355zm33-86h210l-33 53H388z" fill="url(#c)" stroke="#120922" stroke-width="12"/>
+  </g>
+</svg>
