@@ -70,6 +70,44 @@ button, input { font: inherit; }
   align-items: center;
 }
 
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.token-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(153, 69, 255, 0.15);
+  border: 1px solid rgba(153, 69, 255, 0.45);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--cyan);
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+}
+.token-pill:hover {
+  background: rgba(153, 69, 255, 0.28);
+  border-color: var(--cyan);
+}
+.token-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 6px var(--cyan);
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
 .sol-logo {
   width: 66px;
   height: 48px;
