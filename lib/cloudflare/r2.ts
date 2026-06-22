@@ -5,7 +5,33 @@ import {
   ListObjectsV2Command,
 } from '@aws-sdk/client-s3';
 
+const REQUIRED_R2_ENV = [
+  'CLOUDFLARE_ACCOUNT_ID',
+  'CLOUDFLARE_ACCESS_KEY_ID',
+  'CLOUDFLARE_SECRET_ACCESS_KEY',
+] as const;
+
+export function getCloudflareR2Status() {
+  const missing = REQUIRED_R2_ENV.filter((name) => !process.env[name]);
+
+  return {
+    configured: missing.length === 0,
+    missing,
+    bucket: process.env.CLOUDFLARE_R2_BUCKET || 'clawd',
+    publicUrl: process.env.CLOUDFLARE_R2_PUBLIC_URL || null,
+  };
+}
+
+function requireR2Config() {
+  const status = getCloudflareR2Status();
+  if (!status.configured) {
+    throw new Error(`Cloudflare R2 is not configured. Missing: ${status.missing.join(', ')}`);
+  }
+}
+
 function getClient() {
+  requireR2Config();
+
   return new S3Client({
     region: 'auto',
     endpoint: `https://${process.env.CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com`,

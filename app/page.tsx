@@ -1,6 +1,5 @@
 import AvatarStudio from '@/components/AvatarStudio';
 import Gallery from '@/components/Gallery';
-import HatDrop from '@/components/HatDrop';
 import WalletProviders from '@/components/WalletProviders';
 
 const CLAWD_TOKEN = '8cHzQHUS2s2h8TzCmfqPKYiM4dSt4roa3n7MyRLApump';
@@ -9,7 +8,7 @@ export default function Home() {
   return (
     <WalletProviders>
       <main className="page-shell">
-        <div className="hero">
+        <div className="app-shell">
           <header className="topbar">
             <div className="brand">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -21,8 +20,8 @@ export default function Home() {
                 className="brand-logo"
               />
               <div>
-                <h1>PFP Avatar Generator</h1>
-                <p className="subtitle">Create. Customize. Own your identity on <span>Solana.</span></p>
+                <h1>Clawd PFP Studio</h1>
+                <p className="subtitle">Generate, save, and mint polished Solana profile pictures.</p>
               </div>
             </div>
             <div className="topbar-right">
@@ -36,12 +35,10 @@ export default function Home() {
                 <span className="token-dot" />
                 $CLAWD
               </a>
-              <div className="wallet-wrap" id="wallet-button-slot" />
             </div>
           </header>
 
           <AvatarStudio />
-          <HatDrop />
           <Gallery />
         </div>
       </main>

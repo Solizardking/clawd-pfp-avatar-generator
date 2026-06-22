@@ -1,6 +1,6 @@
 import { r2Put, r2PublicUrl } from '@/lib/cloudflare/r2';
 import { dbListAvatars, dbSaveAvatar } from '@/lib/cloudflare/db';
-import type { AccessoryState, AvatarRecord } from '@/lib/types';
+import type { AccessoryState, AvatarGeneratorConfig, AvatarRecord } from '@/lib/types';
 
 export const runtime = 'nodejs';
 
@@ -23,10 +23,33 @@ function safeAccessories(input: unknown): AccessoryState {
   };
 }
 
+function clampNumber(value: unknown, fallback: number, min: number, max: number): number {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return fallback;
+  return Math.min(max, Math.max(min, parsed));
+}
+
+function safeConfig(input: unknown): AvatarGeneratorConfig | undefined {
+  if (!input || typeof input !== 'object') return undefined;
+  const value = input as Partial<AvatarGeneratorConfig>;
+
+  return {
+    background: typeof value.background === 'string' ? value.background.slice(0, 40) : 'eclipse',
+    frame: typeof value.frame === 'string' ? value.frame.slice(0, 40) : 'solana',
+    scale: clampNumber(value.scale, 1, 0.5, 2),
+    offsetX: clampNumber(value.offsetX, 0, -540, 540),
+    offsetY: clampNumber(value.offsetY, 0, -540, 540),
+    rotation: clampNumber(value.rotation, 0, -30, 30),
+  };
+}
+
 export async function GET() {
   try {
     const avatars = await dbListAvatars(60);
-    return Response.json({ avatars });
+    return Response.json(
+      { avatars, source: 'cloudflare-r2' },
+      { headers: { 'Cache-Control': 'no-store' } }
+    );
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Failed to load avatars.';
     return Response.json({ error: message }, { status: 500 });
@@ -39,6 +62,9 @@ export async function POST(request: Request) {
     const imageData = String(body.imageData || '');
     const ownerWallet = body.ownerWallet ? String(body.ownerWallet) : null;
     const accessories = safeAccessories(body.accessories);
+    const config = safeConfig(body.config);
+    const sourceLabel =
+      typeof body.sourceLabel === 'string' ? body.sourceLabel.trim().slice(0, 80) || null : null;
 
     const buffer = parsePngDataUrl(imageData);
     const id = crypto.randomUUID();
@@ -54,13 +80,18 @@ export async function POST(request: Request) {
       storage_path: storagePath,
       owner_wallet: ownerWallet,
       accessories,
+      config,
+      source_label: sourceLabel,
       metadata_url: null,
       nft_mint: null,
       nft_signature: null,
     };
 
     await dbSaveAvatar(avatar);
-    return Response.json({ avatar }, { status: 201 });
+    return Response.json(
+      { avatar, source: 'cloudflare-r2' },
+      { status: 201, headers: { 'Cache-Control': 'no-store' } }
+    );
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Failed to save avatar.';
     return Response.json({ error: message }, { status: 400 });

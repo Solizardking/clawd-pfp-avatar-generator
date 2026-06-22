@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import ClawdChat from '@/components/ClawdChat';
-import './globals.css';
 import '@solana/wallet-adapter-react-ui/styles.css';
+import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://x402.wtf'),
@@ -25,10 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-        <ClawdChat />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
