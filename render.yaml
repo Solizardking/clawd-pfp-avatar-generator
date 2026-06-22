@@ -10,11 +10,11 @@ services:
       - key: NODE_ENV
         value: production
       - key: CLOUDFLARE_ACCOUNT_ID
-        value: 2f5db575118d15ec19000e13282201bc
+        sync: false
       - key: CLOUDFLARE_ACCESS_KEY_ID
-        value: 297b3a86805f2d39157080c6fe41bb3b
+        sync: false
       - key: CLOUDFLARE_SECRET_ACCESS_KEY
-        value: 52b1921116f91ea7419a3b40300f8d4b27f2893c9abdc8c7d63b673cbc4edc5f
+        sync: false
       - key: CLOUDFLARE_R2_BUCKET
         value: clawd
       - key: CLOUDFLARE_R2_PUBLIC_URL

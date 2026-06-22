@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { avatarsRouter } from './routes/avatars';
 import { metadataRouter } from './routes/metadata';
+import { getCloudflareR2Status } from './lib/r2';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -27,7 +28,15 @@ app.use(
 app.use(express.json({ limit: '20mb' }));
 
 app.get('/health', (_req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  const r2 = getCloudflareR2Status();
+
+  res.status(r2.configured ? 200 : 503).json({
+    ok: r2.configured,
+    service: 'clawd-pfp-api',
+    realtime: 'sse-with-polling-fallback',
+    timestamp: new Date().toISOString(),
+    cloudflare: { r2 },
+  });
 });
 
 app.use('/avatars', avatarsRouter);

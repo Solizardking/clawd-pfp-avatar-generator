@@ -17,6 +17,16 @@ metadataRouter.post('/', async (req: Request, res: Response) => {
       .filter(([, enabled]) => Boolean(enabled))
       .map(([trait]) => ({ trait_type: 'Accessory', value: trait }));
 
+    if (avatar.config?.background) {
+      attributes.push({ trait_type: 'Background', value: avatar.config.background });
+    }
+    if (avatar.config?.frame) {
+      attributes.push({ trait_type: 'Frame', value: avatar.config.frame });
+    }
+    if (avatar.source_label) {
+      attributes.push({ trait_type: 'Source', value: avatar.source_label });
+    }
+
     const metadata = {
       name: `Clawd PFP #${avatar.id.slice(0, 6)}`,
       symbol: process.env.NFT_SYMBOL || 'CLAWD',

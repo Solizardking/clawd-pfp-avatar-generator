@@ -81,7 +81,7 @@ export default function Gallery() {
 
     let stream: EventSource | null = null;
 
-    if (typeof EventSource !== 'undefined' && API === '/api') {
+    if (typeof EventSource !== 'undefined') {
       stream = new EventSource(`${API}/avatars/stream`);
       stream.addEventListener('open', () => {
         if (!mountedRef.current) return;
