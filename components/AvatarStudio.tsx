@@ -707,11 +707,7 @@ export default function AvatarStudio() {
       <aside className="studio-panel proof-panel">
         <div>
           <p className="eyebrow">Output Pipeline</p>
-          <h2>Canvas to R2, metadata, and gallery.</h2>
-          <p>
-            The generator renders a 1080px PNG locally, uploads the final artifact to Cloudflare
-            R2, stores a JSON record beside it, and broadcasts the new record into the live gallery.
-          </p>
+          <h2>Canvas to R2 to live gallery.</h2>
         </div>
         <div className="pipeline-list">
           <PipelineItem label="Render" value="1080px PNG" />

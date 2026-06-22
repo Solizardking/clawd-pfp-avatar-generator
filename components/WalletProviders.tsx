@@ -14,7 +14,7 @@ export default function WalletProviders({ children }: { children: ReactNode }) {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
-          <div style={{ position: 'fixed', right: 32, top: 28, zIndex: 10 }}>
+          <div className="wallet-floating">
             <WalletMultiButton />
           </div>
           {children}

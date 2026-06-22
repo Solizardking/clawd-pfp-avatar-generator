@@ -4,15 +4,15 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://x402.wtf'),
-  title: 'Clawd PFP Avatar Generator',
-  description: 'Create Solana-themed PFPs, export for Twitter, and mint as Solana NFTs.',
+  title: 'Clawd PFP Studio',
+  description: 'Generate Cloudflare-backed Solana PFPs, export PNGs, and mint Metaplex Core NFTs.',
   icons: {
     icon: '/icon.png',
     apple: '/icon.png',
   },
   openGraph: {
-    title: 'Clawd PFP Avatar Generator',
-    description: 'Create Solana-themed PFPs, export for Twitter, and mint as Solana NFTs.',
+    title: 'Clawd PFP Studio',
+    description: 'Generate Cloudflare-backed Solana PFPs, export PNGs, and mint Metaplex Core NFTs.',
     images: [{ url: '/master/clawd_mascot_hq_blueprint_grid_4k.png', width: 4096, height: 4096 }],
   },
   twitter: {
