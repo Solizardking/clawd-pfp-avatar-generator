@@ -891,3 +891,259 @@ canvas {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* ─── Grok Image Generation ─────────────────────────────────────── */
+
+.grok-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+.grok-panel.grok-locked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  text-align: center;
+}
+
+.grok-lock-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 420px;
+}
+
+.grok-lock-inner h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.grok-lock-inner p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.grok-lock-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 16px rgba(153, 69, 255, 0.6));
+}
+
+.grok-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.grok-head h2 {
+  margin: 4px 0 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.grok-badge {
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #9945ff22, #9945ff44);
+  border: 1px solid #9945ff55;
+  color: #c07cff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.grok-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grok-input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.grok-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.grok-textarea {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  resize: vertical;
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.grok-textarea:focus {
+  border-color: #9945ff88;
+  box-shadow: 0 0 0 3px rgba(153, 69, 255, 0.12);
+}
+
+.grok-textarea::placeholder {
+  color: var(--quiet);
+}
+
+.grok-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.grok-suggestion {
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.grok-suggestion:hover {
+  border-color: #9945ff66;
+  color: #c07cff;
+  background: rgba(153, 69, 255, 0.08);
+}
+
+.btn-grok-generate {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #9945ff, #7c3aed);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 13px 28px;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn-grok-generate:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-grok-generate:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.grok-error {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 102, 133, 0.08);
+  border: 1px solid rgba(255, 102, 133, 0.25);
+  border-radius: 10px;
+  color: var(--danger);
+  font-size: 0.88rem;
+  padding: 14px 16px;
+}
+
+.grok-buy-link {
+  margin-left: auto;
+  white-space: nowrap;
+  color: #14f195;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.grok-buy-link:hover {
+  opacity: 0.8;
+}
+
+.grok-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.grok-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: #9945ff;
+  border-radius: 50%;
+  animation: grok-spin 0.8s linear infinite;
+}
+
+@keyframes grok-spin {
+  to { transform: rotate(360deg); }
+}
+
+.grok-result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grok-image {
+  width: 100%;
+  max-width: 640px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.grok-result-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-grok-action {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  transition: all 0.15s;
+}
+
+.btn-grok-action:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-3);
+}
+
+.btn-grok-share {
+  background: #000;
+  border-color: #333;
+  color: #fff;
+}
+
+.btn-grok-share:hover {
+  background: #111;
+  border-color: #555;
+}
